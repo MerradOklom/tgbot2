@@ -3,8 +3,13 @@ FROM szemeng76/chatgpt-telegram-workers:latest
 WORKDIR /app
 EXPOSE 8787
 
-# Install curl, python3, and pip
-RUN apk add --no-cache curl python3 py3-pip && \
+# Set timezone environment variable
+ENV TZ=America/Argentina/Buenos_Aires
+
+# Install curl, python3, pip, and tzdata; configure system timezone
+RUN apk add --no-cache curl python3 py3-pip tzdata && \
+    cp /usr/share/zoneinfo/$TZ /etc/localtime && \
+    echo $TZ > /etc/timezone && \
     python3 -m venv /app/venv && \
     . /app/venv/bin/activate && \
     pip install --no-cache-dir uv
