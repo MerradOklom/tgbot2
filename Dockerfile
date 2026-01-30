@@ -23,8 +23,6 @@ COPY dummy-server.js /app/dummy-server.js
 # Set entrypoint to copy secrets, run dummy server, and start the application
 ENTRYPOINT ["/bin/sh", "-c", "\
     cd /app && \
-    echo \"Copying secrets from /etc/secrets/ to /app/...\" && \
-    cp /etc/secrets/* /app/ && \
     echo \"Starting dummy HTTP server on port 8787 in background...\" && \
     node /app/dummy-server.js & \
     echo \"Starting main application in $(pwd)...\" && \
