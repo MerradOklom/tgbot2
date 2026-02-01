@@ -1,4 +1,4 @@
-FROM szemeng76/chatgpt-telegram-workers:latest
+FROM szemeng76/chatgpt-telegram-workers:cb204e1
 
 WORKDIR /app
 EXPOSE 8787
